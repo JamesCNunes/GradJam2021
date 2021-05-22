@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:GradJam2021/Assets/Scripts.meta
+guid: ab6a5d86719fc334692021e50cabb53a
+folderAsset: yes
+=======
 guid: bbeb3ca42049f1b49b7a44d15e44deb7
+>>>>>>> d179f6dbdecd594b66fa3f57543c6482bc027c86:GradJam2021/Assets/Scenes/Ben Scene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
