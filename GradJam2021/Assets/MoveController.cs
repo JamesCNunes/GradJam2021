@@ -48,10 +48,19 @@ public class MoveController : MonoBehaviour
             anim.SetBool("Grounded", grounded);
 
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButtonDown("Jump") && grounded && this.gameObject.layer == 11)
         {
             Jump(jumpForce);
 
+        }
+
+        if (Input.GetAxisRaw("Vertical") == -1)
+        {
+            this.gameObject.layer = 12;
+        }
+        else
+        {
+           this.gameObject.layer = 11;
         }
 
         if (!walking && (horizontalAxis == 1f || horizontalAxis == -1f))
@@ -88,17 +97,17 @@ public class MoveController : MonoBehaviour
         if (collision.gameObject.tag == "Platform" && Input.GetAxisRaw("Vertical") == -1)
         {
             Debug.Log("Down");
-            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            //collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            
+        }
+        else
+        {
+           // this.gameObject.layer = 11;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.tag == "Platform")
-        {
-            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-        }
-    }
+
+
 
     public void Jump(float force)
     {
