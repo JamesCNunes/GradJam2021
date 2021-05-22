@@ -84,6 +84,20 @@ public class MoveController : MonoBehaviour
         {
             canJump = false;
         }
+
+        if (collision.gameObject.tag == "Platform" && Input.GetAxisRaw("Vertical") == -1)
+        {
+            Debug.Log("Down");
+            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag == "Platform")
+        {
+            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        }
     }
 
     public void Jump(float force)
@@ -143,6 +157,6 @@ public class MoveController : MonoBehaviour
         Debug.DrawRay(capCollider.bounds.center - new Vector3(capCollider.bounds.extents.x, 0), Vector2.down * (capCollider.bounds.extents.y + jumpCheckOffset), rayColor);
         Debug.DrawRay(capCollider.bounds.center - new Vector3(capCollider.bounds.extents.x, capCollider.bounds.extents.y + jumpCheckOffset), Vector2.right * (capCollider.bounds.extents.x *2), rayColor);
 
-        return raycastHit.collider != null;
+        return raycastHit.collider != null && raycastHit.collider.isTrigger == false;
     }
 }
