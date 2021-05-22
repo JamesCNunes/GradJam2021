@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     public UnityEvent OnHit;
+    public UnityEvent OnDie;
 
     [SerializeField] private int maxHealth = 1;
     private int curHealth;
@@ -33,7 +34,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        Destroy(this.gameObject);
+        OnDie.Invoke();
     }
 
 
