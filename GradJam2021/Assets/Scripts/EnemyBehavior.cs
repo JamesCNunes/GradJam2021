@@ -11,6 +11,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField]private bool moveLeft;
     [SerializeField]private BoxCollider2D boxCol;
     [SerializeField]private LayerMask mask;
+    [SerializeField]private GameObject visuals;
 
     private Rigidbody2D rb;
 
@@ -23,6 +24,11 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (moveLeft)
         {
+
+            if(visuals.transform.localScale.x < 0)
+            {
+                visuals.transform.localScale = new Vector3(-visuals.transform.localScale.x, visuals.transform.localScale.y, visuals.transform.localScale.z);
+            }
             rb.velocity = new Vector2(-speed, rb.velocity.y);
 
             RaycastHit2D hit = Physics2D.Raycast(new Vector2(boxCol.bounds.min.x, boxCol.bounds.min.y), Vector2.down, groundCheckLength, mask);
@@ -35,6 +41,11 @@ public class EnemyBehavior : MonoBehaviour
         }
         else
         {
+
+            if (visuals.transform.localScale.x > 0)
+            {
+                visuals.transform.localScale = new Vector3(-visuals.transform.localScale.x, visuals.transform.localScale.y, visuals.transform.localScale.z);
+            }
             rb.velocity = new Vector2(speed, rb.velocity.y);
 
             RaycastHit2D hit = Physics2D.Raycast(new Vector2(boxCol.bounds.max.x, boxCol.bounds.min.y), Vector2.down, groundCheckLength, mask);
