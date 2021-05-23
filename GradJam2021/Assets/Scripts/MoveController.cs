@@ -14,10 +14,14 @@ public class MoveController : MonoBehaviour
     private LayerMask groundLayers;
     [SerializeField]
     private float jumpCheckOffset = 0.1f;
+    [SerializeField]
+    private Animator anim;
+    [SerializeField]
+    private GameObject visuals;
 
     private float horizontalAxis;
     private Rigidbody2D rb2d;
-    private Animator anim;
+    
     private BoxCollider2D boxcollider;
     private CapsuleCollider2D capCollider;
     private bool canJump;
@@ -28,7 +32,7 @@ public class MoveController : MonoBehaviour
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         capCollider = GetComponent<CapsuleCollider2D>();
     }
 
@@ -42,6 +46,14 @@ public class MoveController : MonoBehaviour
     void Update()
     {
         horizontalAxis = Input.GetAxisRaw("Horizontal");
+
+        if(horizontalAxis == -1f)
+        {
+            visuals.transform.rotation = Quaternion.Euler(new Vector3(visuals.transform.rotation.x, 0, visuals.transform.rotation.z));
+        }else if(horizontalAxis == 1f)
+        {
+            visuals.transform.rotation = Quaternion.Euler(new Vector3(visuals.transform.rotation.x, 180, visuals.transform.rotation.z));
+        }
 
         grounded = IsGrounded();
         if (anim != null)
