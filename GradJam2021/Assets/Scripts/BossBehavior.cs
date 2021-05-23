@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossBehavior : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class BossBehavior : MonoBehaviour
             case Mammoth.Recover:
                 break;
             case Mammoth.Dead:
+                Dead();
                 break;
 
         }
@@ -148,7 +150,7 @@ public class BossBehavior : MonoBehaviour
         if(endTimer <= 0)
         {
             //End Game
-
+            SceneManager.LoadScene(2);
         }
     }
 }
