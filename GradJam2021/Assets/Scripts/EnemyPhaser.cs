@@ -2,17 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDamage : MonoBehaviour
+public class EnemyPhaser : MonoBehaviour
 {
-    [SerializeField] private Health playerHealth;
+    bool timerOn;
+    [SerializeField] float delay = 1f;
+    float timer;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+
+    public void Phase()
     {
-        if(collision.gameObject.tag == "Enemy")
+        SetLayerRecursively(this.gameObject, 14);
+        timer = delay;
+        timerOn = true;
+    }
+
+    private void Update()
+    {
+        if (timerOn)
         {
-            playerHealth.TakeDamage();
-            collision.gameObject.GetComponent<EnemyPhaser>().Phase();
-           // SetLayerRecursively(collision.gameObject, 14);
+            timer -= Time.deltaTime;
+
+            if(timer <= 0)
+            {
+                timerOn = false;
+                SetLayerRecursively(this.gameObject, 10);
+            }
         }
     }
 

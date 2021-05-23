@@ -18,23 +18,27 @@ public class Health : MonoBehaviour
 
     public void TakeDamage()
     {
-        curHealth--;
+        
 
         if(curHealth > 0)
         {
-            OnHit.Invoke();
-
+            curHealth--;
+            Debug.Log("Player Damaged");
+            OnHit?.Invoke();
         }
-        else
+
+        if(curHealth <= 0)
         {
             Die();
+
         }
+
 
     }
 
     private void Die()
     {
-        OnDie.Invoke();
+        OnDie?.Invoke();
     }
 
 
