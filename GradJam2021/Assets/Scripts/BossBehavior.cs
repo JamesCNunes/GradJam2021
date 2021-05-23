@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
@@ -16,8 +17,14 @@ public class BossBehavior : MonoBehaviour
     private Mammoth state = Mammoth.Charging;
     bool facingLeft;
 
+    [SerializeField]private float waitBeforeCharge = 1f;
+    private float chargeTimer;
+
+    private float endTimer = 4;
+
     [SerializeField] private BoxCollider2D box;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator anim;
     [SerializeField] private float chargeSpeed;
     [SerializeField] private float checkDistance;
     [SerializeField] private LayerMask mask;
@@ -34,6 +41,7 @@ public class BossBehavior : MonoBehaviour
                 Charging();
                 break;
             case Mammoth.Stunned:
+                Stunned();
                 break;
             case Mammoth.Recover:
                 break;
@@ -72,10 +80,13 @@ public class BossBehavior : MonoBehaviour
         if(hit.collider != null)
         {
             //Hit the wall
-            
+            //Stop
 
             facingLeft = !facingLeft;
+            rb.velocity = Vector3.zero;
             this.gameObject.transform.localScale = new Vector3(this.gameObject.transform.localScale.x * -1, this.gameObject.transform.localScale.y, this.gameObject.transform.localScale.z);
+            StunMammoth();
+            return;
         }
         
 
@@ -88,5 +99,43 @@ public class BossBehavior : MonoBehaviour
             rb.velocity = new Vector2(-chargeSpeed, rb.velocity.y);
         }
 
+    }
+
+    void StunMammoth()
+    {
+        anim.SetTrigger("Idle");
+        chargeTimer = waitBeforeCharge;
+        state = Mammoth.Stunned;
+    }
+
+    void Stunned()
+    {
+        chargeTimer -= Time.deltaTime;
+
+        if(chargeTimer <= 0)
+        {
+            anim.SetTrigger("Charge");
+            state = Mammoth.Charging;
+        }
+    }
+
+    public void Death()
+    {
+        rb.velocity = Vector3.zero;
+        state = Mammoth.Dead;
+        anim.SetTrigger("Idle");
+        
+        //sound
+    }
+
+    void Dead()
+    {
+        endTimer -= Time.deltaTime;
+
+        if(endTimer <= 0)
+        {
+            //End Game
+
+        }
     }
 }

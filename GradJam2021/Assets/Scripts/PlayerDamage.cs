@@ -10,6 +10,7 @@ public class PlayerDamage : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            Debug.Log("Player Hit");
             playerHealth.TakeDamage();
             collision.gameObject.GetComponent<EnemyPhaser>().Phase();
            // SetLayerRecursively(collision.gameObject, 14);

@@ -23,7 +23,6 @@ public class Health : MonoBehaviour
         if(curHealth > 0)
         {
             curHealth--;
-            Debug.Log("Player Damaged");
             OnHit?.Invoke();
         }
 
