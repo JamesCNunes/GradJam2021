@@ -11,6 +11,10 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField]private bool moveLeft;
     [SerializeField]private BoxCollider2D boxCol;
     [SerializeField]private LayerMask mask;
+    [SerializeField]private AudioSource source;
+    [SerializeField]private GameObject visuals;
+
+    bool isDead;
 
     private Rigidbody2D rb;
 
@@ -21,6 +25,11 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Update()
     {
+        if (isDead)
+        {
+            return;
+        }
+
         if (moveLeft)
         {
 
@@ -56,4 +65,15 @@ public class EnemyBehavior : MonoBehaviour
             }
         }
     }
+
+    public void Die()
+    {
+        isDead = true;
+        source.Play();
+        boxCol.enabled = false;
+        visuals.SetActive(false);
+        rb.velocity = Vector3.zero;
+        this.enabled = false;
+    }
+
 }
