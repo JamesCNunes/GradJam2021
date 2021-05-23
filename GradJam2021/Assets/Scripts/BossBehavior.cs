@@ -14,7 +14,7 @@ public class BossBehavior : MonoBehaviour
         Dead
     }
 
-    private Mammoth state = Mammoth.Charging;
+    private Mammoth state = Mammoth.WaitToStart;
     bool facingLeft;
 
     [SerializeField]private float waitBeforeCharge = 1f;
@@ -23,11 +23,13 @@ public class BossBehavior : MonoBehaviour
     private float endTimer = 4;
 
     [SerializeField] private BoxCollider2D box;
+    [SerializeField] private BoxCollider2D trigBox;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
     [SerializeField] private float chargeSpeed;
     [SerializeField] private float checkDistance;
     [SerializeField] private LayerMask mask;
+ //   [SerializeField] private AudioSource roar;
 
     private void Update()
     {
@@ -103,6 +105,7 @@ public class BossBehavior : MonoBehaviour
 
     void StunMammoth()
     {
+        
         anim.SetTrigger("Idle");
         chargeTimer = waitBeforeCharge;
         state = Mammoth.Stunned;
@@ -121,6 +124,8 @@ public class BossBehavior : MonoBehaviour
 
     public void Death()
     {
+        trigBox.enabled = false;
+        box.enabled = false;
         rb.velocity = Vector3.zero;
         state = Mammoth.Dead;
         anim.SetTrigger("Idle");
