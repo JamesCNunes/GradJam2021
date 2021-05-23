@@ -47,12 +47,12 @@ public class MoveController : MonoBehaviour
     {
         horizontalAxis = Input.GetAxisRaw("Horizontal");
 
-        if(horizontalAxis == -1f)
+        if(horizontalAxis == -1f && visuals.transform.localScale.x < 0)
         {
-            visuals.transform.rotation = Quaternion.Euler(new Vector3(visuals.transform.rotation.x, 0, visuals.transform.rotation.z));
-        }else if(horizontalAxis == 1f)
+            visuals.transform.localScale = new Vector3(visuals.transform.localScale.x * -1, visuals.transform.localScale.y, visuals.transform.localScale.z);
+        }else if(horizontalAxis == 1f && visuals.transform.localScale.x > 0)
         {
-            visuals.transform.rotation = Quaternion.Euler(new Vector3(visuals.transform.rotation.x, 180, visuals.transform.rotation.z));
+            visuals.transform.localScale = new Vector3(visuals.transform.localScale.x * -1, visuals.transform.localScale.y, visuals.transform.localScale.z);
         }
 
         grounded = IsGrounded();
