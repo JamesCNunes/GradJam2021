@@ -29,7 +29,7 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private float chargeSpeed;
     [SerializeField] private float checkDistance;
     [SerializeField] private LayerMask mask;
- //   [SerializeField] private AudioSource roar;
+    [SerializeField] private AudioSource roar;
 
     private void Update()
     {
@@ -55,7 +55,14 @@ public class BossBehavior : MonoBehaviour
 
     public void StartBattle()
     {
+        roar.Play();
+        Invoke("FirstCharge", 1f);
+    }
+
+    void FirstCharge()
+    {
         state = Mammoth.Charging;
+        anim.SetTrigger("Charge");
     }
 
     public Mammoth GetState()
@@ -102,6 +109,7 @@ public class BossBehavior : MonoBehaviour
         }
 
     }
+
 
     void StunMammoth()
     {
