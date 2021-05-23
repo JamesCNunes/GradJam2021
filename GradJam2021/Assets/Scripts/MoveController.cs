@@ -18,6 +18,8 @@ public class MoveController : MonoBehaviour
     private Animator anim;
     [SerializeField]
     private GameObject visuals;
+    [SerializeField]
+    private AudioSource JumpSFX;
 
     private float horizontalAxis;
     private Rigidbody2D rb2d;
@@ -62,6 +64,7 @@ public class MoveController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && grounded && this.gameObject.layer == 11)
         {
+            JumpSFX.Play();
             Jump(jumpForce);
 
         }
