@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1514881924845405489}
   - component: {fileID: 1514881924845405490}
   m_Layer: 10
-  m_Name: FlyingEnemy_Done
+  m_Name: Eagle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,6 +193,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1514881924845405493}
     m_Modifications:
+    - target: {fileID: -2427562163427114334, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 644fa6711dbae2b498625751db27dcde, type: 2}
     - target: {fileID: -1284704976450414610, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -263,6 +268,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2417726335103819270, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 644fa6711dbae2b498625751db27dcde, type: 2}
+    - target: {fileID: 4529437528335960576, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 644fa6711dbae2b498625751db27dcde, type: 2}
     - target: {fileID: 5235702436513704565, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
@@ -271,7 +286,12 @@ PrefabInstance:
     - target: {fileID: 5235702436513704565, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0
+      value: -0.0000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235702436513704565, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 2.4511342
       objectReference: {fileID: 0}
     - target: {fileID: 6355293691801183744, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
         type: 3}
@@ -281,27 +301,32 @@ PrefabInstance:
     - target: {fileID: 7113440979791936079, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.004409075
+      value: -0.0044100285
       objectReference: {fileID: 0}
     - target: {fileID: 7113440979791936079, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.00000047683716
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7574570573374049645, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.0042505264
+      value: 0.0042495728
       objectReference: {fileID: 0}
     - target: {fileID: 7574570573374049645, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.0005748272
+      value: 0.0005745888
       objectReference: {fileID: 0}
     - target: {fileID: 7574570573374049645, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 2.6194258
+      value: 2.6194255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7574570573374049645, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 2.870751
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -7967989346018493721, guid: 1fc91f754ab63f74a83737aaa44d9ff4,
