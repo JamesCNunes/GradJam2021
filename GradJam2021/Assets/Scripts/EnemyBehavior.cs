@@ -11,7 +11,6 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField]private bool moveLeft;
     [SerializeField]private BoxCollider2D boxCol;
     [SerializeField]private LayerMask mask;
-    [SerializeField]private GameObject visuals;
 
     private Rigidbody2D rb;
 
@@ -25,9 +24,9 @@ public class EnemyBehavior : MonoBehaviour
         if (moveLeft)
         {
 
-            if(visuals.transform.localScale.x < 0)
+            if(gameObject.transform.localScale.x < 0)
             {
-                visuals.transform.localScale = new Vector3(-visuals.transform.localScale.x, visuals.transform.localScale.y, visuals.transform.localScale.z);
+                gameObject.transform.localScale = new Vector3(-1 * gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
             }
             rb.velocity = new Vector2(-speed, rb.velocity.y);
 
@@ -42,9 +41,9 @@ public class EnemyBehavior : MonoBehaviour
         else
         {
 
-            if (visuals.transform.localScale.x > 0)
+            if (gameObject.transform.localScale.x > 0)
             {
-                visuals.transform.localScale = new Vector3(-visuals.transform.localScale.x, visuals.transform.localScale.y, visuals.transform.localScale.z);
+                gameObject.transform.localScale = new Vector3(-1 * gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
             }
             rb.velocity = new Vector2(speed, rb.velocity.y);
 
